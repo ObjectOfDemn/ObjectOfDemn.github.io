@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | M.Stephen&#39;s Site</title>
+  <title>给XCode写一个自增build号的shell脚本 | M.Stephen&#39;s Site</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -193,55 +193,69 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2016/03/22/给XCode写一个自增build号的shell脚本/">给XCode写一个自增build号的shell脚本</a></h4>
-                            
-                            <p><time datetime="2016-03-22T09:29:33.000Z"><a href="/2016/03/22/给XCode写一个自增build号的shell脚本/">2016-03-22</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/11/22/势如破竹的金州勇士/">势如破竹的金州勇士</a></h4>
-                            
-                            <p><time datetime="2015-11-22T03:52:37.000Z"><a href="/2015/11/22/势如破竹的金州勇士/">2015-11-22</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/11/17/Hello World/">Hello World</a></h4>
-                            
-                            <p><time datetime="2015-11-17T10:19:35.000Z"><a href="/2015/11/17/Hello World/">2015-11-17</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-03-22T09:29:33.000Z" itemprop="datePublished">
+          2016-03-22
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS/'>iOS</a>
+    
+    
+</span>
+                <h1>给XCode写一个自增build号的shell脚本</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>相信各位在做iOS开发的时候，提交测试的workflow中总要涉及与build号打交道的工作。<br>可能有些人选择重复的手工录入build号，但是对于多个scheme的项目而言，每次更改alpha/beta/release等等的build号实在是一件很麻烦的事情。<br><a id="more"></a><br><strong>本着让自己更懒的原则，那就只能开始造轮子：</strong><br><br></p>
+<h2 id="下面是自增build号的run_script(shell脚本)：">下面是自增build号的run script(shell脚本)：</h2><p>很简单的原理 ———— 从info.plist中读取build号并修改：</p>
+<hr>
+<pre><code><span class="shebang">#!/bin/bash
+</span>
+buildNumber=$(/usr/libexec/PlistBuddy -c <span class="string">"Print CFBundleVersion"</span> <span class="string">"<span class="variable">$INFOPLIST_FILE</span>"</span>)
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>捡起被时间碾碎的勇气，让双手沾满清香的泥。</p>
+buildNumber=$((<span class="variable">$buildNumber</span> + <span class="number">1</span>))
+
+/usr/libexec/PlistBuddy -c <span class="string">"Set :CFBundleVersion <span class="variable">$buildNumber</span>"</span> <span class="string">"<span class="variable">$INFOPLIST_FILE</span>"</span>
+</code></pre><hr>
+<p>其实个人以为最优的构建方式还是XCode Server配合run script，这样使我们能够只用用git/svn push代码就行啦，剩下的统统交给脚本搞定！<br>哪天再来写一个XCode Server配合run script的教程好啦。</p>
+<hr>
+<h2 id="末了，果然程序员都是懒的，喵。">末了，果然程序员都是懒的，喵。</h2>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2015/11/22/势如破竹的金州勇士/">
+        势如破竹的金州勇士 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/03/22/给XCode写一个自增build号的shell脚本/" data-title="给XCode写一个自增build号的shell脚本" data-url="http://yoursite.com/2016/03/22/给XCode写一个自增build号的shell脚本/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"mstephen"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
