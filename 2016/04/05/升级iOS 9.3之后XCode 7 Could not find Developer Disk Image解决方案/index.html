@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: 随笔 | M.Stephen&#39;s Site</title>
+  <title>升级iOS 9.3之后XCode 7 Could not find Developer Disk Image解决方案 | M.Stephen&#39;s Site</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -206,37 +206,62 @@
 
         <!-- ============================ END Hero Image =========================== -->
       
-
-
-<section id="services">
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2015/11/17/Hello World/">Hello World</a></h4>
-                            
-                            <p><time datetime="2015-11-17T10:19:35.000Z"><a href="/2015/11/17/Hello World/">2015-11-17</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2016-04-05T03:07:15.000Z" itemprop="datePublished">
+          2016-04-05
+      </time>
+    
+    
+    | 
+    <a href='/tags/iOS/'>iOS</a>
+    
+    
+</span>
+                <h1>升级iOS 9.3之后XCode 7 Could not find Developer Disk Image解决方案</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>每次iOS版本更新都有或多或少的bug，9.3版本的iOS之前一度让老型号设备变砖，苹果也停止了iOS9.3的推送。在fix这个bug之后苹果又开始提示我更新9.3的系统，由于个人的强迫症原因，看到红点一定要更新掉，结果真机调试的时候出现了这样一行字：<br><a id="more"></a><br><strong>Could not find Developer Disk Image</strong><br><br><br>我承认，手贱导致了XCode必须要更新到7.3，系统随之也要在v10.11以上才行 —————— 于是开始了漫长的更新工作。<br>如果你不想做更新的工作的话，可以用下面的方法解决这个问题：</p>
+<h2 id="过程如下：">过程如下：</h2><p>1.进入以下目录：</p>
+<pre><code><span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer<span class="regexp">/Platforms/i</span>PhoneOS.platform<span class="regexp">/DeviceSupport</span>
+</code></pre><p>我们可以看到真机调试时候需要的disk image。<br>你可以在<a href="https://github.com/M-Stephen/iOS_9.3_DISK_IMAGE" target="_blank" rel="external">这里</a>（我的github）下载一个iOS 9.3的disk image，当然你也可以选择向已经更新了9.3的同事索要一个disk image并复制进去。</p>
+<p>2.重启你的XCode。</p>
+<hr>
+<h2 id="然后奇迹发生了_————_又能愉快的写代码了。">然后奇迹发生了 ———— 又能愉快的写代码了。</h2>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2016/03/22/给XCode写一个自增build号的shell脚本/">
+        给XCode写一个自增build号的shell脚本 →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>捡起被时间碾碎的勇气，让双手沾满清香的泥。</p>
-        </div>
+        <div class="duoshuo">
+<div class="ds-thread" data-thread-key="2016/04/05/升级iOS 9.3之后XCode 7 Could not find Developer Disk Image解决方案/" data-title="升级iOS 9.3之后XCode 7 Could not find Developer Disk Image解决方案" data-url="http://yoursite.com/2016/04/05/升级iOS 9.3之后XCode 7 Could not find Developer Disk Image解决方案/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"mstephen"};
+(function() {
+	var ds = document.createElement('script');
+	ds.type = 'text/javascript';ds.async = true;
+	ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+	ds.charset = 'UTF-8';
+	(document.getElementsByTagName('head')[0] 
+	 || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
